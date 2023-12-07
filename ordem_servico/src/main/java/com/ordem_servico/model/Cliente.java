@@ -113,7 +113,7 @@ public class Cliente extends GenericModel {
     @Override
     public String toString() {
         return "Cliente {" +
-                "id=" + getId(id) +
+                "id=" + getId() +
                 "nome=" + nome + '\'' +
                 "dtNascimento=" + dtNascimento +
                 "cpf=" + cpf + '\'' +

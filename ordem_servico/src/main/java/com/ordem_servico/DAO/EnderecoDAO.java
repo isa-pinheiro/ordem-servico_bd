@@ -10,11 +10,11 @@ import java.util.List;
 
 public class EnderecoDAO extends ConexaoDB {
 
-    private static final String INSERT_CIDADE_SQL = "INSERT INTO endereco (rua, numero, bairro, cep, id_cidade) VALUES (?, ?, ?, ?, ?);";
-    private static final String SELECT_CIDADE_BY_ID = "SELECT id, rua, numero, bairro, cep, id_cidade FROM endereco WHERE id = ?";
-    private static final String SELECT_ALL_CIDADE = "SELECT * FROM endereco;";
-    private static final String DELETE_CIDADE_SQL = "DELETE FROM endereco WHERE id = ?;";
-    private static final String UPDATE_CIDADE_SQL = "UPDATE endereco SET rua = ?, numero = ?, bairro = ?, cep = ?, id_cidade = ? WHERE id = ?;";
+    private static final String INSERT_ENDERECO_SQL = "INSERT INTO endereco (rua, numero, bairro, cep, id_cidade) VALUES (?, ?, ?, ?, ?);";
+    private static final String SELECT_ENDERECO_BY_ID = "SELECT id, rua, numero, bairro, cep, id_cidade FROM endereco WHERE id = ?";
+    private static final String SELECT_ALL_ENDERECO = "SELECT * FROM endereco;";
+    private static final String DELETE_ENDERECO_SQL = "DELETE FROM endereco WHERE id = ?;";
+    private static final String UPDATE_ENDERECO_SQL = "UPDATE endereco SET rua = ?, numero = ?, bairro = ?, cep = ?, id_cidade = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM endereco;";
 
     public Integer count() {
@@ -33,7 +33,7 @@ public class EnderecoDAO extends ConexaoDB {
     }
 
     public void insertEndereco(Endereco entidade) {
-        try (PreparedStatement preparedStatement = prepararSQL(INSERT_CIDADE_SQL)) {
+        try (PreparedStatement preparedStatement = prepararSQL(INSERT_ENDERECO_SQL)) {
             preparedStatement.setString(1, entidade.getRua());
             preparedStatement.setString(2, entidade.getNumero());
             preparedStatement.setString(3, entidade.getBairro());
@@ -49,7 +49,7 @@ public class EnderecoDAO extends ConexaoDB {
 
     public Endereco selectEndereco(int id) {
         Endereco entidade = null;
-        try (PreparedStatement preparedStatement = prepararSQL(SELECT_CIDADE_BY_ID)) {
+        try (PreparedStatement preparedStatement = prepararSQL(SELECT_ENDERECO_BY_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -72,7 +72,7 @@ public class EnderecoDAO extends ConexaoDB {
 
     public List<Endereco> selectAllEnderecos() {
         List<Endereco> entidades = new ArrayList<>();
-        try (PreparedStatement preparedStatement = prepararSQL(SELECT_ALL_CIDADE)) {
+        try (PreparedStatement preparedStatement = prepararSQL(SELECT_ALL_ENDERECO)) {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -93,7 +93,7 @@ public class EnderecoDAO extends ConexaoDB {
     }
 
     public boolean deleteEndereco(int id) throws SQLException {
-        try (PreparedStatement statement = prepararSQL(DELETE_CIDADE_SQL)) {
+        try (PreparedStatement statement = prepararSQL(DELETE_ENDERECO_SQL)) {
             statement.setInt(1, id);
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {
@@ -102,7 +102,7 @@ public class EnderecoDAO extends ConexaoDB {
     }
 
     public boolean updateEndereco(Endereco entidade) throws SQLException {
-        try (PreparedStatement statement = prepararSQL(UPDATE_CIDADE_SQL)) {
+        try (PreparedStatement statement = prepararSQL(UPDATE_ENDERECO_SQL)) {
             statement.setString(1, entidade.getRua());
             statement.setString(2, entidade.getNumero());
             statement.setString(3, entidade.getBairro());
