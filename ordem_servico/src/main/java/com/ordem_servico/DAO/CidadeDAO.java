@@ -10,11 +10,11 @@ import java.util.List;
 
 public class CidadeDAO extends ConexaoDB {
 
-    private static final String INSERT_ESPECIALIDADE_SQL = "INSERT INTO cidade (descricao, codigo, id_uf) VALUES (?, ?, ?);";
-    private static final String SELECT_ESPECIALIDADE_BY_ID = "SELECT id, descricao, codigo, id_uf FROM cidade WHERE id = ?";
-    private static final String SELECT_ALL_ESPECIALIDADE = "SELECT * FROM cidade;";
-    private static final String DELETE_ESPECIALIDADE_SQL = "DELETE FROM cidade WHERE id = ?;";
-    private static final String UPDATE_ESPECIALIDADE_SQL = "UPDATE cidade SET descricao = ?, codigo = ?, id_uf = ? WHERE id = ?;";
+    private static final String INSERT_CIDADE_SQL = "INSERT INTO cidade (descricao, codigo, id_uf) VALUES (?, ?, ?);";
+    private static final String SELECT_CIDADE_BY_ID = "SELECT id, descricao, codigo, id_uf FROM cidade WHERE id = ?";
+    private static final String SELECT_ALL_CIDADE = "SELECT * FROM cidade;";
+    private static final String DELETE_CIDADE_SQL = "DELETE FROM cidade WHERE id = ?;";
+    private static final String UPDATE_CIDADE_SQL = "UPDATE cidade SET descricao = ?, codigo = ?, id_uf = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM cidade;";
 
     public Integer count() {
@@ -33,7 +33,7 @@ public class CidadeDAO extends ConexaoDB {
     }
 
     public void insertCidade(Cidade entidade) {
-        try (PreparedStatement preparedStatement = prepararSQL(INSERT_ESPECIALIDADE_SQL)) {
+        try (PreparedStatement preparedStatement = prepararSQL(INSERT_CIDADE_SQL)) {
             preparedStatement.setString(1, entidade.getDescricao());
             preparedStatement.setInt(2, entidade.getCodigo());
             preparedStatement.setInt(3, entidade.getIdUf());
@@ -47,7 +47,7 @@ public class CidadeDAO extends ConexaoDB {
 
     public Cidade selectCidade(int id) {
         Cidade entidade = null;
-        try (PreparedStatement preparedStatement = prepararSQL(SELECT_ESPECIALIDADE_BY_ID)) {
+        try (PreparedStatement preparedStatement = prepararSQL(SELECT_CIDADE_BY_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -67,7 +67,7 @@ public class CidadeDAO extends ConexaoDB {
 
     public List<Cidade> selectAllCidades() {
         List<Cidade> entidades = new ArrayList<>();
-        try (PreparedStatement preparedStatement = prepararSQL(SELECT_ALL_ESPECIALIDADE)) {
+        try (PreparedStatement preparedStatement = prepararSQL(SELECT_ALL_CIDADE)) {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -86,7 +86,7 @@ public class CidadeDAO extends ConexaoDB {
     }
 
     public boolean deleteCidade(int id) throws SQLException {
-        try (PreparedStatement statement = prepararSQL(DELETE_ESPECIALIDADE_SQL)) {
+        try (PreparedStatement statement = prepararSQL(DELETE_CIDADE_SQL)) {
             statement.setInt(1, id);
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {
@@ -95,7 +95,7 @@ public class CidadeDAO extends ConexaoDB {
     }
 
     public boolean updateCidade(Cidade entidade) throws SQLException {
-        try (PreparedStatement statement = prepararSQL(UPDATE_ESPECIALIDADE_SQL)) {
+        try (PreparedStatement statement = prepararSQL(UPDATE_CIDADE_SQL)) {
             statement.setString(1, entidade.getDescricao());
             statement.setInt(2, entidade.getCodigo());
             statement.setInt(3, entidade.getIdUf());
