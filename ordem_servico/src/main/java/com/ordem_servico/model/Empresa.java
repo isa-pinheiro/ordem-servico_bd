@@ -1,7 +1,5 @@
 package com.ordem_servico.model;
 
-import java.util.Arrays;
-
 public class Empresa extends GenericModel {
 
     private String nomeFantasia;
