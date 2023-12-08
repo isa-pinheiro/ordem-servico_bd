@@ -22,7 +22,7 @@ public class OrdemServicoTeste {
 
         //salvar
         System.out.println("Salvar");
-        OrdemServico ordemservico = new OrdemServico("observacao", Timestamp.valueOf(LocalDateTime.of(2000, 01, 01, 01, 01, 01)), Timestamp.valueOf(LocalDateTime.of(2000, 02, 01, 01, 01, 01)), "usernameresponsavel", 1, 1);
+        OrdemServico ordemservico = new OrdemServico("observacao", Timestamp.valueOf(LocalDateTime.of(2000, 01, 01, 01, 01, 01)), Timestamp.valueOf(LocalDateTime.of(2000, 02, 01, 01, 01, 01)), "usernameresponsavel", 2, 1);
         ordemservicodao.insertOrdemServico(ordemservico);
 
         //buscar por ID
@@ -35,11 +35,11 @@ public class OrdemServicoTeste {
         ordemservico.setObservacao("rua1");
         ordemservico.setDtAbertura(Timestamp.valueOf(LocalDateTime.of(2001, 01, 01, 01, 01, 01)));
         ordemservico.setDtSaida(Timestamp.valueOf(LocalDateTime.of(2001, 02, 01, 01, 01, 01)));
-        ordemservico.setIdCliente(1);
+        ordemservico.setIdCliente(2);
         ordemservico.setIdEmpresa(1);
 
         ordemservicodao.updateOrdemServico(ordemservico);
-        ordemservico = ordemservicodao.selectOrdemServico(1);
+        ordemservico = ordemservicodao.selectOrdemServico(3);
         System.out.println(ordemservico);
 
         //select all
