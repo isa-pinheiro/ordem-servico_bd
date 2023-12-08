@@ -10,8 +10,8 @@ import java.util.List;
 
 public class UfDAO extends ConexaoDB {
 
-    private static final String INSERT_UF_SQL = "INSERT INTO uf (descricao, codigo) VALUES (?, ?, ?);";
-    private static final String SELECT_UF_BY_ID = "SELECT id, descricao, codigo, FROM uf WHERE id = ?";
+    private static final String INSERT_UF_SQL = "INSERT INTO uf (descricao, codigo) VALUES (?, ?);";
+    private static final String SELECT_UF_BY_ID = "SELECT id, descricao, codigo FROM uf WHERE id = ?";
     private static final String SELECT_ALL_UF = "SELECT * FROM uf;";
     private static final String DELETE_UF_SQL = "DELETE FROM uf WHERE id = ?;";
     private static final String UPDATE_UF_SQL = "UPDATE uf SET descricao = ?, codigo = ? WHERE id = ?;";
@@ -102,5 +102,6 @@ public class UfDAO extends ConexaoDB {
             throw new RuntimeException(e);
         }
     }
+
 
 }

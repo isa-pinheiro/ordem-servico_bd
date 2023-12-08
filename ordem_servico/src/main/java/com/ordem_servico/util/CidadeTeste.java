@@ -33,6 +33,7 @@ public class CidadeTeste {
         cidade.setDescricao("descricao1");
         cidade.setCodigo(2);
         cidade.setIdUf(1);
+        System.out.println(cidade);
         cidadedao.updateCidade(cidade);
         cidade = cidadedao.selectCidade(1);
         System.out.println(cidade);

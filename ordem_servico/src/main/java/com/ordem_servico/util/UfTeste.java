@@ -25,12 +25,14 @@ public class UfTeste {
 
         //buscar por ID
         System.out.println("Busca id");
+        uf = ufdao.selectUf(1);
         System.out.println(ufdao.selectUf(1));
 
         //update
         System.out.println("update");
-        uf.setDescricao("descricao1");
+        uf.setDescricao("rua1");
         uf.setCodigo(2);
+
         ufdao.updateUf(uf);
         uf = ufdao.selectUf(1);
         System.out.println(uf);
@@ -42,7 +44,7 @@ public class UfTeste {
 
         //delete
         // System.out.println("delete");
-        // ufdao.deleteCidade(1);
+        // ufdao.deleteUf(1);
         // ufdao.selectAllUfs().forEach(System.out::println);
     }
 }

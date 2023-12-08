@@ -100,7 +100,7 @@ public class ItemOrdemServicoDAO extends ConexaoDB {
             statement.setString(1, entidade.getDescricao());
             statement.setLong(2, entidade.getPreco());
             statement.setInt(3, entidade.getIdOrdemServico());
-            statement.setInt(5, entidade.getId());
+            statement.setInt(4, entidade.getId());
 
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {
